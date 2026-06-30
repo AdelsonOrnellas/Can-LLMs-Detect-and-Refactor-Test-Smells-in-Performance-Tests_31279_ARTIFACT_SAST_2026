@@ -1,0 +1,25 @@
+You are an expert in performance engineering, load testing, and k6 scripting.
+
+Review the following k6 code and identify whether it contains any of the four performance smells described below. For each smell, a number (1–4), a name, and a definition are provided.
+
+SMELL 1 — Costly operations in the init context
+The init context runs once per virtual user before the test starts. Performing expensive operations in this phase — such as reading large files, parsing JSON, or executing heavy computations — can degrade performance and increase resource usage unnecessarily.
+
+SMELL 2 — Do not use thresholds
+Thresholds define success or failure conditions based on test metrics. Without them, a test may always be reported as successful even when the system is underperforming, creating false confidence — especially in CI/CD pipelines.
+
+SMELL 3 — Not checking requests
+k6 does not automatically fail a test when HTTP requests return 4xx or 5xx responses; it only updates failure-related metrics and continues execution. Without explicit checks validating response correctness, the script may produce false positives and incorrectly report successful results.
+
+SMELL 4 — Not using tags
+Tags are key-value metadata that can be attached to requests, metrics, and checks in k6. Without tags, it becomes difficult to filter and group metrics by endpoint or user flow, making it harder to pinpoint the source of performance issues.
+
+TASK:
+Analyze the k6 code provided below and determine whether it contains one or more of the smells above (1, 2, 3, or 4).
+
+For each smell detected:
+- Identify which smell it is (number and name).
+- Point out exactly where in the code it occurs.
+- Suggest a refactored version for code with a code smell.
+
+If no smell is found, state that the code does not exhibit any of the four performance smells described.

@@ -1,0 +1,83 @@
+You are an expert in performance engineering, load testing, and k6 scripting.
+
+Review the following k6 code and identify whether it contains any of the four performance smells described below. For each smell, a number (1–4), a name, a definition, and a concrete example are provided.
+
+SMELL 1 — Costly operations in the init context
+
+Definition:
+The init context runs once per virtual user before the test starts. Performing expensive operations in this phase — such as reading large files, parsing JSON, or executing heavy computations — can degrade performance and increase resource usage unnecessarily.
+
+Example:
+import { open } from "k6";
+const largeDataFile = open("./large-data.json");
+const testData = JSON.parse(largeDataFile);       // heavy parsing in init
+for (let i = 0; i < 100; i++) {
+  console.log(i);                                  // unnecessary loop in init
+}
+
+SMELL 2 — Do not use thresholds
+
+Definition:
+Thresholds define success or failure conditions based on test metrics. Without them, a test may always be reported as successful even when the system is underperforming, creating false confidence — especially in CI/CD pipelines.
+
+Example:
+import http from 'k6/http';
+export const options = {
+  vus: 50,
+  duration: '1m',
+  // no thresholds defined
+};
+export default function () {
+  http.get('https://api.minha-aplicacao.com');
+}
+
+SMELL 3 — Not checking requests
+
+Definition:
+k6 does not automatically fail a test when HTTP requests return 4xx or 5xx responses; it only updates failure-related metrics and continues execution. Without explicit checks validating response correctness, the script may produce false positives and incorrectly report successful results.
+
+Example:
+import http from 'k6/http';
+import { sleep } from 'k6';
+export const options = {
+  thresholds: {
+    http_req_duration: ['p(95)<500'],
+  },
+};
+export default function () {
+  http.get('https://api.minha-aplicacao.com/dados-criticos');  // no check()
+  sleep(1);
+}
+
+
+SMELL 4 — Not using tags
+
+Definition:
+Tags are key-value metadata that can be attached to requests, metrics, and checks in k6. Without tags, it becomes difficult to filter and group metrics by endpoint or user flow, making it harder to pinpoint the source of performance issues.
+
+Example:
+import http from 'k6/http';
+import { check } from 'k6';
+export const options = {
+  thresholds: {
+    'http_req_duration{name:Login}': ['p(95)<300'],
+    'http_req_duration{name:Products}': ['p(95)<1000'],
+    'http_req_duration{name:Cart}': ['p(95)<500'],
+  },
+};
+export default function () {
+  http.get('https://api.minha-aplicacao.com/login');     // no tags attached
+  http.get('https://api.minha-aplicacao.com/products');  // no tags attached
+  http.get('https://api.minha-aplicacao.com/cart');      // no tags attached
+}
+
+
+TASK:
+Analyze the k6 code provided below and determine whether it contains one or more of the smells above (1, 2, 3, or 4).
+
+For each smell detected:
+- Identify which smell it is (number and name).
+- Point out exactly where in the code it occurs.
+- Suggest a refactored version for code with a code smell.
+
+If no smell is found, state that the code does not exhibit any of the four performance smells described.

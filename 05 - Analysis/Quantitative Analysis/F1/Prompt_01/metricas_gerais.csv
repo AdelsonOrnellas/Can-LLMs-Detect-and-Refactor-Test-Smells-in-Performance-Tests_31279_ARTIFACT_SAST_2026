@@ -1,0 +1,4 @@
+Prompt,LLM,TP_total,FP_total,FN_total,TN_total,Precision_micro,Recall_micro,F1_micro,Accuracy_micro,Precision_macro,Recall_macro,F1_macro,Accuracy_macro
+Prompt_01,chatgpt,193,228,111,380,0.4584,0.6349,0.5324,0.6283,0.4765,0.621,0.5218,0.6283
+Prompt_01,claude,198,249,106,359,0.443,0.6513,0.5273,0.6107,0.4558,0.6553,0.5222,0.6107
+Prompt_01,gemini,213,268,91,340,0.4428,0.7007,0.5427,0.6064,0.4673,0.7252,0.5544,0.6063

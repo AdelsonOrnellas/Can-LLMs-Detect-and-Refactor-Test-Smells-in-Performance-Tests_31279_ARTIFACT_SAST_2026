@@ -1,0 +1,13 @@
+Prompt,LLM,Smell,TP,FP,FN,TN
+Prompt_02,chatgpt,S1,8,5,7,208
+Prompt_02,chatgpt,S2,38,104,18,68
+Prompt_02,chatgpt,S3,24,47,63,94
+Prompt_02,chatgpt,S4,111,59,35,23
+Prompt_02,claude,S1,12,6,3,207
+Prompt_02,claude,S2,40,109,16,63
+Prompt_02,claude,S3,17,50,70,91
+Prompt_02,claude,S4,100,55,46,27
+Prompt_02,gemini,S1,15,5,0,208
+Prompt_02,gemini,S2,40,121,16,51
+Prompt_02,gemini,S3,28,59,59,82
+Prompt_02,gemini,S4,114,64,32,18
