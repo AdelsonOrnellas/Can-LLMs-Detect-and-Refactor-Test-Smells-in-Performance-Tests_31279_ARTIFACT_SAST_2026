@@ -326,4 +326,5 @@ This study builds directly on the k6-performance linter and dataset:
 
 ## Acknowledgements
 
-Omitted for double-anonymous review.
+We thank the reviewers for their feedback. This work was financed in part by the FAPEAL (Fundação de Amparo à Pesquisa do Estado de Alagoas)
+Process: [E:60030.0000000591/2026], The work was also partially supported by INES.IA (National Institute of Science and Technology for Software Engineering Based on and for Artificial Intelligence) www.ines.org.br, CNPq grant 408817/2024-0. The work was also partially supported by CNPq, grants 312195/2021-4, 404825/2023-0, and 443393/2023-0.
