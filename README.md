@@ -6,7 +6,7 @@ three widely used Large Language Models (LLMs) — **Claude**, **GPT**, and
 [k6](https://grafana.com/docs/k6/latest/) load testing scripts, and whether
 adding illustrative code examples to the prompt changes their performance.
 
-The study targets SAST 2026 (Brazilian Symposium on Software Testing).
+This work was submitted to the 11th Brazilian Symposium on Software Testing (SAST 2026), with submission number #31279.
 
 ---
 
